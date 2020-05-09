@@ -3,6 +3,7 @@ import 'package:clean_arch/features/number_trivia/number_trivia.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class MockNumberTriviaRepository extends Mock
     implements NumberTriviaRepository {}
@@ -17,3 +18,5 @@ class MockNetworkInfo extends Mock implements NetworkInfo {}
 class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
+
+class MockHttpClient extends Mock implements http.Client {}
