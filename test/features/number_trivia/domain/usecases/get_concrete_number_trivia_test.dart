@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:clean_arch/features/number_trivia/number_trivia.dart';
 
-import 'package:clean_arch/core/tests/tests.dart';
+import '../../../../fixture/mocks.dart';
 
 void main() {
   GetConcreteNumberTrivia usecase;
