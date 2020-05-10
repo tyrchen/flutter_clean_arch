@@ -20,3 +20,10 @@ class MockDataConnectionChecker extends Mock implements DataConnectionChecker {}
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 
 class MockHttpClient extends Mock implements http.Client {}
+
+class MockGetConcreteNumberTrivia extends Mock
+    implements GetConcreteNumberTrivia {}
+
+class MockGetRandomNumberTrivia extends Mock implements GetRandomNumberTrivia {}
+
+class MockInputConverter extends Mock implements InputConverter {}
