@@ -15,6 +15,8 @@ const String CACHE_FAILURE_MSG = 'Cache Failure';
 const String INVALID_INPUT_FAILURE_MSG =
     'Invalid input - the number must be a positive integer or zero';
 
+typedef Future<Either<Failure, NumberTrivia>> _GetResult();
+
 class NumberTrivialBloc extends Bloc<NumberTrivialEvent, NumberTrivialState> {
   final GetConcreteNumberTrivia concrete;
   final GetRandomNumberTrivia random;
@@ -41,9 +43,32 @@ class NumberTrivialBloc extends Bloc<NumberTrivialEvent, NumberTrivialState> {
           yield Error(message: INVALID_INPUT_FAILURE_MSG);
         },
         (n) async* {
-          yield Loading();
+          yield* _loadData(() => concrete(Params(number: n)));
         },
       );
-    } else if (event is GetRandomNumberTrivia) {}
+    } else if (event is GetTriviaForRandomNumber) {
+      yield* _loadData(() => random(NoParams()));
+    }
+  }
+
+  Stream<NumberTrivialState> _loadData(_GetResult getResult) async* {
+    yield Loading();
+    final result = await getResult();
+
+    yield result.fold(
+      (failure) => Error(message: _mapFailureToMessage(failure)),
+      (r) => Loaded(trivia: r),
+    );
+  }
+
+  String _mapFailureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return SERVER_FAILURE_MSG;
+      case CacheFailure:
+        return CACHE_FAILURE_MSG;
+      default:
+        return 'Unexpected error';
+    }
   }
 }
