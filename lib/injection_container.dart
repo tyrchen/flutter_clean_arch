@@ -10,7 +10,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //! Features - Number Trivia
   sl.registerFactory(
-    () => NumberTrivialBloc(
+    () => NumberTriviaBloc(
       concrete: sl(),
       random: sl(),
       converter: sl(),

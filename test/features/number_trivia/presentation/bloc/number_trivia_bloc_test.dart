@@ -8,7 +8,7 @@ import 'package:mockito/mockito.dart';
 import '../../../../fixture/mocks.dart';
 
 void main() {
-  NumberTrivialBloc bloc;
+  NumberTriviaBloc bloc;
   MockGetConcreteNumberTrivia mockConcrete;
   MockGetRandomNumberTrivia mockRandom;
   MockInputConverter mockConverter;
@@ -17,7 +17,7 @@ void main() {
     mockConcrete = MockGetConcreteNumberTrivia();
     mockRandom = MockGetRandomNumberTrivia();
     mockConverter = MockInputConverter();
-    bloc = NumberTrivialBloc(
+    bloc = NumberTriviaBloc(
       concrete: mockConcrete,
       random: mockRandom,
       converter: mockConverter,

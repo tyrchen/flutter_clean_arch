@@ -17,12 +17,12 @@ const String INVALID_INPUT_FAILURE_MSG =
 
 typedef Future<Either<Failure, NumberTrivia>> _GetResult();
 
-class NumberTrivialBloc extends Bloc<NumberTrivialEvent, NumberTrivialState> {
+class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
   final GetConcreteNumberTrivia concrete;
   final GetRandomNumberTrivia random;
   final InputConverter converter;
 
-  NumberTrivialBloc({
+  NumberTriviaBloc({
     @required this.concrete,
     @required this.random,
     @required this.converter,
@@ -30,11 +30,11 @@ class NumberTrivialBloc extends Bloc<NumberTrivialEvent, NumberTrivialState> {
         assert(random != null),
         assert(converter != null);
   @override
-  NumberTrivialState get initialState => Empty();
+  NumberTriviaState get initialState => Empty();
 
   @override
-  Stream<NumberTrivialState> mapEventToState(
-    NumberTrivialEvent event,
+  Stream<NumberTriviaState> mapEventToState(
+    NumberTriviaEvent event,
   ) async* {
     if (event is GetTriviaForConcreteNumber) {
       final converted = converter.stringToUnsigned(event.numberString);
@@ -51,7 +51,7 @@ class NumberTrivialBloc extends Bloc<NumberTrivialEvent, NumberTrivialState> {
     }
   }
 
-  Stream<NumberTrivialState> _loadData(_GetResult getResult) async* {
+  Stream<NumberTriviaState> _loadData(_GetResult getResult) async* {
     yield Loading();
     final result = await getResult();
 
