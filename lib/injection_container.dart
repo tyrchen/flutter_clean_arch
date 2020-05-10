@@ -16,6 +16,7 @@ Future<void> init() async {
       converter: sl(),
     ),
   );
+  print('bloc is registered');
 
   // repository
   sl.registerLazySingleton<NumberTriviaRepository>(
@@ -25,26 +26,33 @@ Future<void> init() async {
       remote: sl(),
     ),
   );
+  print('repository is registered');
 
   // Data sources
   sl.registerLazySingleton<NumberTriviaRemoteDataSource>(
     () => NumberTriviaRemoteDataSourceImpl(client: sl()),
   );
+
   sl.registerLazySingleton<NumberTriviaLocalDataSource>(
     () => NumberTriviaLocalDataSourceImpl(sharedPreferences: sl()),
   );
+  print('Data sources is registered');
 
   // Use cases
   sl.registerLazySingleton(() => GetConcreteNumberTrivia(sl()));
   sl.registerLazySingleton(() => GetRandomNumberTrivia(sl()));
+  print('Use cases is registered');
 
   //! Core
   sl.registerLazySingleton(() => InputConverter());
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  print('InputConverter & NetworkInfo are registered');
 
   //! External
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => DataConnectionChecker());
+  print(
+      'sharedPreferences & http.Client & DataConnectionChecker() are registered');
 }
