@@ -57,8 +57,10 @@ class _TrviaControlState extends State<TrviaControl> {
   void dispatchConconcrete() {
     _controller.clear();
     if (inputStr == null)
-      return BlocProvider.of(context).add(GetTriviaForRandomNumber());
-    BlocProvider.of(context).add(GetTriviaForConcreteNumber(inputStr));
+      return BlocProvider.of<NumberTriviaBloc>(context)
+          .add(GetTriviaForRandomNumber());
+    BlocProvider.of<NumberTriviaBloc>(context)
+        .add(GetTriviaForConcreteNumber(inputStr));
   }
 
   void dispatchRandom() {
