@@ -39,6 +39,7 @@ class NumberTriviaPage extends StatelessWidget {
                         return MessageDisplay(message: 'Start searching...');
                       if (state is Error)
                         return MessageDisplay(message: state.message);
+                      return MessageDisplay(message: 'Unknown state $state');
                     },
                   ),
                 ),

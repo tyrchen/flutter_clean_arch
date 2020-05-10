@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:clean_arch/core/core.dart';
 import 'package:clean_arch/features/number_trivia/number_trivia.dart';
 import 'package:dartz/dartz.dart';
@@ -81,7 +79,7 @@ void main() {
         'should return last locally cached data when the cached data is present',
         () async {
           // arrange
-          when(mockLocal.getLast()).thenAnswer((Dart_CObject) async => model);
+          when(mockLocal.getLast()).thenAnswer((_) async => model);
           // act
           final result = await repo.get(n);
 
