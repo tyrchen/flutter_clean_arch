@@ -71,27 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.14.12"
-  connectivity:
-    dependency: "direct main"
-    description:
-      name: connectivity
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.8+5"
-  connectivity_macos:
-    dependency: transitive
-    description:
-      name: connectivity_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0+3"
-  connectivity_platform_interface:
-    dependency: transitive
-    description:
-      name: connectivity_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
   convert:
     dependency: transitive
     description:
@@ -324,13 +303,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
-  plugin_platform_interface:
-    dependency: transitive
-    description:
-      name: plugin_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.2"
   pool:
     dependency: transitive
     description:
