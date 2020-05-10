@@ -39,17 +39,20 @@ void main() {
     final setupMockConverterFail = () =>
         when(mockConverter.stringToUnsigned(any))
             .thenReturn(Left(InvalidInputFailure()));
-    test(
-        'should call the InputConverter to validate and convert the string to an unsiged integer',
-        () async {
-      // arrange
-      setupMockConverterSuccess();
-      // act
-      bloc.add(GetTriviaForConcreteNumber(numStr));
-      await untilCalled(mockConverter.stringToUnsigned(any));
-      // assert
-      verify(mockConverter.stringToUnsigned(numStr));
-    });
+
+    blocTest(
+      'should call the InputConverter to validate and convert the string to an unsiged integer',
+      build: () async {
+        setupMockConverterSuccess();
+        when(mockConcrete(any)).thenAnswer((_) async => Right(entity));
+        return bloc;
+      },
+      act: (bloc) async => bloc.add(GetTriviaForConcreteNumber(numStr)),
+      verify: (_bloc) {
+        verify(mockConverter.stringToUnsigned(numStr));
+        return;
+      },
+    );
 
     blocTest(
       'should emilt [Error] when input is invalid',
